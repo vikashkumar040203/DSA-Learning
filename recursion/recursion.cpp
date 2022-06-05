@@ -232,9 +232,26 @@ using namespace std;
 
 // friends pair problems
 
+// int friends(int n)
+// {
+//     if (n == 0 || n == 1 || n == 2)
+//         return n;
+//     return friends(n - 1) + friends(n - 2) * (n - 1);
+// }
 
+// 0/1 knapsack problem
 
-int main()
+int knapack(int val[], int wt[], int n, int w)
+{
+    if (n == 0 || w == 0)
+        return 0;
+    if (wt[n - 1] > w)
+        return knapack(val, wt, n - 1, w);
+
+    return max(knapack(val, wt, n - 1, w - wt[n - 1]) + val[n - 1], knapack(val, wt, n - 1, w));
+}
+
+int main() 
 {
 
     return 0;
